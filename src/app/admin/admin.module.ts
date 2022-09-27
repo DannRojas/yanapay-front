@@ -22,6 +22,7 @@ import {
 import { DialogComponent } from '../domain/dialog/dialog.component';
 import { ExpenseFormComponent } from './expenses/expense-form/expense-form.component';
 import { ApplicationsComponent } from './applications/applications.component';
+import { TypePipe } from './type.pipe';
 // Formats
 export const MY_FORMATS = {
   parse: {
@@ -44,6 +45,7 @@ export const MY_FORMATS = {
     DialogComponent,
     ExpenseFormComponent,
     ApplicationsComponent,
+    TypePipe,
   ],
   imports: [
     CommonModule,

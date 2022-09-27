@@ -12,6 +12,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { DateHelper } from 'src/app/domain/helpers/date-helper';
 import { GenerateReportService } from '../services/generate-report.service';
+import { IncomeTypes } from 'src/app/domain/enums/income-types.enum';
 
 @Component({
   selector: 'app-incomes',
@@ -34,6 +35,7 @@ export class IncomesComponent implements OnInit {
   public incomesData: any;
   public incomes!: IncomeModel[];
   public user!: UserModel;
+  public IncomeTypes = IncomeTypes;
 
   public range = new FormGroup({
     start: new FormControl<Date | null>(null, Validators.required),

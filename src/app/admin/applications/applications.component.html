@@ -1,0 +1,44 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="card card-container mb-3">
+        <div class="card-body">
+          <h2 class="title pb-3">Aplicaciones</h2>
+          <!-- Applications car -->
+          <div class="row">
+            <div
+              class="col-lg-4 col-md-6 col-sm-12 mb-2"
+              *ngFor="let application of applications"
+            >
+              <mat-card class="mat-elevation-z8">
+                <mat-card-subtitle>{{ application.type }}</mat-card-subtitle>
+                <div class="d-flex">
+                  <img [src]="application.image" class="mx-auto" />
+                </div>
+                <mat-card-title class="mt-1">{{
+                  application.name
+                }}</mat-card-title>
+                <mat-card-content>
+                  <p>{{ application.description }}</p>
+                </mat-card-content>
+                <mat-divider inset></mat-divider>
+                <mat-card-actions class="d-flex">
+                  <a
+                    mat-raised-button
+                    color="primary"
+                    class="mx-auto text-white"
+                    [href]="application.url"
+                    target="_blank"
+                  >
+                    Ingresar
+                  </a>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+          </div>
+          <!-- ******** -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

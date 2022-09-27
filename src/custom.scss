@@ -1,0 +1,32 @@
+// .anternative-theme {
+@use "@angular/material" as mat;
+//   @import "@angular/material/theming";
+
+//   @include mat-core();
+
+//   $ag-custom-primary: mat-palette($mat-purple, 600);
+//   $ag-custom-accent: mat-palette($mat-blue, 600);
+
+//   $ag-custom-warn: mat-palette($mat-red);
+
+//   $ag-custom-theme: mat-dark-theme($ag-custom-primary, $ag-custom-accent, $ag-custom-warn);
+
+//   @include angular-material-theme($ag-custom-theme);
+// }
+
+@import "@angular/material/theming";
+
+@include mat.core();
+
+$ag-custom-primary: mat.define-palette(mat.$light-blue-palette, 400);
+$ag-custom-accent: mat.define-palette(mat.$amber-palette, 500);
+
+$ag-custom-warn: mat.define-palette(mat.$red-palette);
+
+$ag-custom-theme: mat.define-dark-theme(
+  $ag-custom-primary,
+  $ag-custom-accent,
+  $ag-custom-warn
+);
+
+@include mat.all-component-themes($ag-custom-theme);

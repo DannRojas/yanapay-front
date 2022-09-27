@@ -1,0 +1,56 @@
+<form
+  [formGroup]="formLogin"
+  autocomplete="off"
+  (ngSubmit)="onLogin()"
+  #formDirective="ngForm"
+  class="mt-2 text-white"
+>
+  <p class="h5">
+    <mat-form-field class="col-12">
+      <mat-label>Email</mat-label>
+      <input type="text" matInput formControlName="email" />
+      <mat-error *ngIf="formLogin.get('email')?.hasError('required')"
+        >El email de usuario es requerido</mat-error
+      >
+      <mat-error *ngIf="formLogin.get('email')?.hasError('email')"
+        >Ingrese un email válido</mat-error
+      >
+    </mat-form-field>
+  </p>
+  <p class="h5">
+    <mat-form-field class="col-12">
+      <mat-label>Contraseña</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        formControlName="password"
+      />
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error *ngIf="formLogin.get('password')?.hasError('required')"
+        >La contraseña es requerida</mat-error
+      >
+      <mat-error *ngIf="formLogin.get('password')?.hasError('minlength')"
+        >La contraseña debe tener almenos 8 caracteres</mat-error
+      >
+    </mat-form-field>
+  </p>
+  <div class="col-12 d-flex mb-2">
+    <button
+      [disabled]="!formLogin.valid"
+      mat-flat-button
+      color="primary"
+      class="mx-auto text-white"
+    >
+      Ingresar
+    </button>
+  </div>
+</form>

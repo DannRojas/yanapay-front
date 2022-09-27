@@ -1,0 +1,22 @@
+<div class="header-dialog d-flex">
+  <mat-icon class="icon mx-auto">{{ data.icon }}</mat-icon>
+</div>
+<div class="text-center">
+  <h1 mat-dialog-title class="mb-0">{{ data.title }}</h1>
+</div>
+<div mat-dialog-content>
+  <p *ngIf="data.description">{{ data.description }}</p>
+  <div class="bottons-end d-flex mt-2">
+    <button mat-button (click)="dialogRef.close(false)" class="mx-auto">
+      Close
+    </button>
+    <button
+      mat-button
+      [mat-dialog-close]="true"
+      cdkFocusInitial
+      class="mx-auto"
+    >
+      Aceptar
+    </button>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<main class="background-dark">
+  <div class="container">
+    <!-- <div class="row">
+      <h1 class="text-white">Yanapay-net</h1>
+    </div> -->
+    <div class="row">
+      <div class="col-lg-6 col-md-8 col-sm-12 mx-auto mb-3 mt-5">
+        <div class="card card-dark" mat-elevation-z4>
+          <img
+            id="img-login"
+            src="assets/img/ilustracion.svg.svg"
+            class="img-fluid mt-3"
+            alt="Ilustración de bienvenida"
+          />
+          <div class="card-body mt-1">
+            <div class="d-flex">
+              <h2 class="card-title text-theme mx-auto">Yanapay-net</h2>
+            </div>
+            <mat-tab-group
+              mat-align-tabs="center"
+              (selectedTabChange)="onResetForms()"
+              animationDuration="1000ms"
+            >
+              <mat-tab label="Iniciar Sesión">
+                <app-login></app-login>
+              </mat-tab>
+              <mat-tab label="Registro">
+                <app-register></app-register>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

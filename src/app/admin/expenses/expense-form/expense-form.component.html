@@ -1,0 +1,128 @@
+<!-- <div class="example-action-buttons">
+  <button mat-button (click)="accordion.openAll()">Expand All</button>
+  <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+</div> -->
+<mat-accordion class="example-headers-align" multi>
+  <mat-expansion-panel (closed)="resetForm()">
+    <!-- (opened)="" -->
+    <mat-expansion-panel-header>
+      <mat-panel-title>Crear Pago</mat-panel-title>
+      <mat-panel-description>
+        Pulse para registrar un pago o egreso
+        <mat-icon>list_alt</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <div class="container">
+      <form
+        class="row"
+        [formGroup]="expenseForm"
+        autocomplete="off"
+        (ngSubmit)="onSubmit()"
+        #formDirective="ngForm"
+      >
+        <mat-form-field class="col-lg-6 col-sm-12" appearance="fill">
+          <mat-label>Descripción</mat-label>
+          <input type="text" matInput formControlName="name" />
+          <mat-error *ngIf="expenseForm.get('name')?.hasError('required')"
+            >La descripción del pago es requerido</mat-error
+          >
+          <mat-error *ngIf="expenseForm.get('name')?.hasError('maxLength')"
+            >Debe tener un máximo de 50 caracteres</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-6 col-sm-12 ml-0" appearance="fill">
+          <mat-label>Tipo de pago</mat-label>
+          <mat-select formControlName="type">
+            <mat-option
+              *ngFor="let ExpenseType of ExpenseTypes | keyvalue"
+              [value]="ExpenseType.key"
+              >{{ ExpenseType.value }}</mat-option
+            >
+          </mat-select>
+          <mat-error *ngIf="expenseForm.get('type')?.hasError('required')"
+            >El tipo de pago es requerido</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field class="col-6 ml-0" appearance="fill">
+          <mat-label>Precio unitario</mat-label>
+          <input
+            type="number"
+            (keyup)="resetTotalBuy()"
+            matInput
+            formControlName="unitPrice"
+          />
+          <span matSuffix>Bs.&nbsp;</span>
+          <mat-error *ngIf="expenseForm.get('unitPrice')?.hasError('required')"
+            >El precio unitario es requerido</mat-error
+          >
+          <mat-error *ngIf="expenseForm.get('unitPrice')?.hasError('min')"
+            >El precio unitario debe ser mayor a 1</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field class="col-6 ml-0" appearance="fill">
+          <mat-label>Unidades</mat-label>
+          <input
+            type="number"
+            (keyup)="resetTotalBuy()"
+            matInput
+            formControlName="units"
+          />
+          <mat-error *ngIf="expenseForm.get('units')?.hasError('required')"
+            >Las unidades pagadas son requeridas</mat-error
+          >
+          <mat-error *ngIf="expenseForm.get('units')?.hasError('min')"
+            >Las unidades pagadas deben ser mayores a 1</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-6 col-sm-12 ml-0" appearance="fill">
+          <mat-label>Total pago</mat-label>
+          <input
+            type="number"
+            matInput
+            readonly=""
+            formControlName="totalBuy"
+          />
+          <span matSuffix>Bs.&nbsp;</span>
+          <!-- <mat-error *ngIf="incomeForm.get('totalSale')?.hasError('required')"
+            >Las unidades vendidas son requeridas</mat-error
+          >
+          <mat-error *ngIf="incomeForm.get('totalSale')?.hasError('min')"
+            >Las unidades vendidas deben ser mayores a 1</mat-error
+          > -->
+        </mat-form-field>
+
+        <mat-form-field class="col-lg-6 col-sm-12 ml-0" appearance="fill">
+          <mat-label>Fecha del pago</mat-label>
+          <input
+            matInput
+            readonly
+            [matDatepicker]="dateBuy"
+            formControlName="date"
+          />
+          <!-- [value]="incomeForm.get('date')?.value" -->
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="dateBuy"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #dateBuy disabled="false"></mat-datepicker>
+        </mat-form-field>
+        <div class="col-12 d-flex mb-2">
+          <button
+            type="submit"
+            [disabled]="!expenseForm.valid"
+            mat-flat-button
+            color="primary"
+            class="mx-auto text-white"
+          >
+            Guardar
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

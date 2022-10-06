@@ -30,6 +30,12 @@ export class TypePipe implements PipeTransform {
       case 'PaymentSalaries':
         return 'Pago de sueldos y salarios';
         break;
+      case 'PaymentServices':
+        return 'Pago de servicios';
+        break;
+      case 'OtherExpenses':
+        return 'Otros egresos';
+        break;
 
       default:
         return null;

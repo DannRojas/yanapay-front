@@ -1,8 +1,93 @@
-<main class="background-dark">
+<div class="background">
+  <div class="mask">
+    <div class="container">
+      <div class="row" id="fila">
+        <div class="col-12 d-flex">
+          <div class="init mx-auto">
+            <img
+              id="img-login"
+              src="assets/img/logo.png"
+              class="img-fluid mx-auto"
+            />
+            <h2 class="title_1 text-theme mx-auto">Yanapay-net &nbsp;</h2>
+          </div>
+        </div>
+        <div class="col-lg-6 col-sm-12 pb-3">
+          <div class="card card-dark-light" mat-elevation-z4>
+            <div class="card-body mt-1">
+              <div class="d-flex">
+                <h2 class="card-title text-theme mx-auto">
+                  Ingresa a Yanapay-net
+                </h2>
+              </div>
+              <mat-tab-group
+                mat-align-tabs="center"
+                (selectedTabChange)="onResetForms()"
+                animationDuration="1000ms"
+              >
+                <mat-tab label="Iniciar Sesión">
+                  <app-login></app-login>
+                </mat-tab>
+                <mat-tab label="Registro">
+                  <app-register></app-register>
+                </mat-tab>
+              </mat-tab-group>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-sm-12 pb-4">
+          <div
+            id="carouselExampleSlidesOnly"
+            class="carousel slide"
+            data-ride="carousel"
+          >
+            <div class="carousel-inner text-center">
+              <div class="carousel-item active">
+                <h2 class="title-carousel mb-1 font-weight-bold">
+                  Registro de ingresos
+                </h2>
+                <div class="w-100 d-flex">
+                  <img
+                    src="assets/img/ingresos.jpg"
+                    class="img-fluid mx-auto"
+                    alt="Ilustración de bienvenida"
+                  />
+                </div>
+              </div>
+              <div class="carousel-item">
+                <h2 class="title-carousel mb-1 font-weight-bold">
+                  Registro de egresos
+                </h2>
+                <div class="w-100 d-flex">
+                  <img
+                    src="assets/img/egresos.jpg"
+                    class="img-fluid mx-auto"
+                    alt="Ilustración de bienvenida"
+                  />
+                </div>
+              </div>
+              <div class="carousel-item">
+                <h2 class="title-carousel mb-1 font-weight-bold">
+                  Acceso a datos
+                </h2>
+                <div class="w-100 d-flex">
+                  <img
+                    src="assets/img/filtro.jpg"
+                    class="img-fluid mx-auto"
+                    alt="Ilustración de bienvenida"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <main class="background-dark">
   <div class="container">
-    <!-- <div class="row">
-      <h1 class="text-white">Yanapay-net</h1>
-    </div> -->
     <div class="row">
       <div class="col-lg-6 col-md-8 col-sm-12 mx-auto mb-3 mt-5">
         <div class="card card-dark" mat-elevation-z4>
@@ -33,4 +118,4 @@
       </div>
     </div>
   </div>
-</main>
+</main> -->

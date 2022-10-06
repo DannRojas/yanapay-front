@@ -40,6 +40,8 @@ export class GenerateReportService {
   private debtPayment: number = 0;
   private rentPayment: number = 0;
   private paymentSalaries: number = 0;
+  private paymentServices: number = 0;
+  private otherExpenses: number = 0;
   private totalBuys: number = 0;
 
   //Totals
@@ -144,6 +146,8 @@ export class GenerateReportService {
             ['Pago de deudas en efectivo:', this.debtPayment + ' Bs.'],
             ['Pago de alquiler:', this.rentPayment + ' Bs.'],
             ['Pago de sueldos y salarios:', this.paymentSalaries + ' Bs.'],
+            ['Pago de servicios:', this.paymentServices + ' Bs.'],
+            ['Otros egresos:', this.otherExpenses + ' Bs.'],
             [new Txt('Total egresos: ').bold().end, this.totalBuys + ' Bs.'],
           ])
             .margin([75, 10])
@@ -165,13 +169,11 @@ export class GenerateReportService {
             new Cell(new Txt('Totales').bold().end).fillColor('#dbd9d9').end,
             new Cell(new Txt('Monto').bold().end).fillColor('#dbd9d9').end,
           ],
-          [
-            'Total ingresos - egresos:',
-            this.totalSales - this.totalBuys + ' Bs.',
-          ],
+          ['Total ingresos:', this.totalSales + ' Bs.'],
+          ['Total egresos:', this.totalBuys + ' Bs.'],
           [
             new Txt('Flujo neto de caja: ').bold().end,
-            this.totalSales + this.totalBuys + ' Bs.',
+            this.totalSales - this.totalBuys + ' Bs.',
           ],
         ])
           .margin([180, 10])
@@ -216,12 +218,16 @@ export class GenerateReportService {
     this.debtPayment = this.sumatoryExpenses('DebtPayment');
     this.rentPayment = this.sumatoryExpenses('RentPayment');
     this.paymentSalaries = this.sumatoryExpenses('PaymentSalaries');
+    this.paymentServices = this.sumatoryExpenses('PaymentServices');
+    this.otherExpenses = this.sumatoryExpenses('OtherExpenses');
     this.totalBuys =
       this.purchaseMaterials +
       this.purchaseMachinery +
       this.debtPayment +
       this.rentPayment +
-      this.paymentSalaries;
+      this.paymentSalaries +
+      this.paymentServices +
+      this.otherExpenses;
   }
 
   sumatoryIncomes(category: string): number {
